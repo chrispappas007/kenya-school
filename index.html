@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8 />
+  <title>Kenyan School Attrition Rates</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+  <!-- Links -->
+  <link href='https://api.mapbox.com/mapbox-assembly/v0.8.0/assembly.min.css' rel='stylesheet'>
+  <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
+  <link href='https://fonts.googleapis.com/css?family=Domine' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arapey' rel='stylesheet' type='text/css'>
+  <link href='css/styles.css' rel='stylesheet' />
+</head>
+
+<body>
+  <!-- Mouse info box container -->
+  <div id='info' class='py6 px12 bg-white border border--gray-light round absolute wmax200 none'>
+    <p>County: <span></span></p>
+    <p class='girls'>girls <span></span>: <span class='txt-l txt-bold'></span></p>
+    <p class='boys'>boys <span></span>: <span class='txt-l txt-bold'></span></p>
+    <hr class='txt-hr'>
+    <p class='my6'>trend: grades 1 &ndash; 8</p>
+    <p class='mb6'><span class='girlspark'></span></p>
+    <p><span class='boyspark'></span></p>
+  </div>
+
+  <div class='grid'>
+    <!-- Left column of text -->
+    <div class='col col--12 col--3-ml p12 pb6 viewport-third viewport-full-ml'>
+      <div class='h-full prose prose--dark bg-gray scroll-auto'>
+        <h1 class='txt-headline px6 mb6'>Kenyan School Attrition Rates</h1>
+        <p class='px6'>Data on the enrollment of children in primary school (grades 1-8) were compiled for the year 2014. The rates were parsed by gender (girls vs. boys) and totaled by county. Data was provided through the <a class='link' href='http://www.opendata.go.ke/'>Kenyan Open Data portal</a>          and can be downloaded <a class='link' href='http://icta-kenyaopendata.opendata.arcgis.com/datasets/national-boys-and-girls-enrollments-per-class-for-primary-school-education'>here</a>.</p>
+        <h2 class='txt-xl px6 mt18 mb12'>Rates by Gender</h2>
+        <p class='px6'>Overall, enrollment rates between girls and boys have remained consistent. Boys out-number girls in most counties; however girls have higher enrollment rates in more populated counties such as Nairobi and Meru. In general, enrollment rates seem
+          to decrease in the higher primary school grades in general, and especially in rural counties. The greatest disparity in enrollment between boys and girls is also found in the rural counties. There are likely a variety of factors that contribute
+          to decreases in enrollment (entrance into the workforce, marriage, etc.) and future initiatives will need to mitigate these factors.</p>
+        <p class='px6'><img src="images/kids.jpg" />
+          <footer class='mt12 txt-s'>
+            <ul>
+              <li>Map authored by <a class='link' href='https://chrispappas007.github.io/'>Christina Pappas</a></li>
+        </p>
+        </footer>
+      </div>
+    </div>
+    <div class='col col--12 col--9-ml h180 h-full-ml'>
+      <div id="map" class='viewport-twothirds viewport-full-ml'></div>
+
+      <!-- ui slider -->
+      <div id='slider' class='range w240 bg-white border border--gray-light round-ml p12'>
+        <input type='range' min="1" , max="8" , value="1" , step="1" class="slider" />
+      </div>
+
+      <!-- legend -->
+      <div id='legend' class='bg-white round-ml p18'>
+        <h3 class='txt-bold mb12 w-full mx-auto'>Legend</h3>
+        <div class='legend-circles relative w180 wmax180'>
+          <div class="legend-large border border--gray-light absolute"></div>
+          <div class="legend-small border border--gray-light absolute"></div>
+          <div class="legend-large-label txt-m absolute"></div>
+          <div class="legend-small-label txt-m absolute"></div>
+        </div>
+      </div>
+      <!-- Grade indicator -->
+      <div id='grade' class='range w120 bg-white border border--gray-light round-ml p12'>
+        <p>Grade: <span></span></p>
+      </div>
+    </div>
+
+  </div>
+  <!-- Scripts -->
+  <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+  <script async defer src="https://api.mapbox.com/mapbox-assembly/v0.8.0/assembly.js"></script>
+  <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+  <script src='js/app.js'></script>
+
+</body>
+
+</html>
