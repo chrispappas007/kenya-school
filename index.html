@@ -15,16 +15,6 @@
 </head>
 
 <body>
-  <!-- Mouse info box container -->
-  <div id='info' class='py6 px12 bg-white border border--gray-light round absolute wmax200 none'>
-    <p>County: <span></span></p>
-    <p class='girls'>girls <span></span>: <span class='txt-l txt-bold'></span></p>
-    <p class='boys'>boys <span></span>: <span class='txt-l txt-bold'></span></p>
-    <hr class='txt-hr'>
-    <p class='my6'>trend: grades 1 &ndash; 8</p>
-    <p class='mb6'><span class='girlspark'></span></p>
-    <p><span class='boyspark'></span></p>
-  </div>
 
   <div class='grid'>
     <!-- Left column of text -->
@@ -54,7 +44,7 @@
 
       <!-- legend -->
       <div id='legend' class='bg-white round-ml p18'>
-        <h3 class='txt-bold mb12 w-full mx-auto'>Legend</h3>
+        <h3 class='txt-bold mb12 w-full wmax180'>Number of <span class="girls">girls</span> and <span class="boys">boys</span> enrolled</h3>
         <div class='legend-circles relative w180 wmax180'>
           <div class="legend-large border border--gray-light absolute"></div>
           <div class="legend-small border border--gray-light absolute"></div>
@@ -63,11 +53,23 @@
         </div>
       </div>
       <!-- Grade indicator -->
-      <div id='grade' class='range w120 bg-white border border--gray-light round-ml p12'>
-        <p>Grade: <span></span></p>
+      <div id='grade' class='range px18 bg-white border border--gray-light round-ml'>
+        <p>Grade: <span>1</span></p>
       </div>
     </div>
 
+  </div>
+
+
+  <!-- Mouse info box container -->
+  <div id='info' class='py6 px12 bg-white border border--gray-light round absolute wmax200 none'>
+    <p>County: <span></span></p>
+    <p class='girls'>girls <span></span>: <span class='txt-l txt-bold'></span></p>
+    <p class='boys'>boys <span></span>: <span class='txt-l txt-bold'></span></p>
+    <hr class='txt-hr'>
+    <p class='my6'>trend: grades 1 &ndash; 8</p>
+    <p class='mb6'><span class='girlspark'></span></p>
+    <p><span class='boyspark'></span></p>
   </div>
   <!-- Scripts -->
   <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>

@@ -142,8 +142,7 @@
     map.fitBounds(girlsLayer.getBounds());
     //call slider function
     sequenceUI(girlsLayer, boysLayer, 1);
-    //call grade box function
-    addGrade(boysLayer, 1);
+
     //call resize circles function
     resizeCircles(girlsLayer, boysLayer, 1);
     //call info box function
@@ -168,7 +167,7 @@
     });
   }
 
-  function sequenceUI(girlsLayer, boysLayer, currentGrade) {
+  function sequenceUI(girlsLayer, boysLayer) {
 
     // create Leaflet control for the slider
     var sliderControl = L.control({
@@ -191,18 +190,7 @@
 
     // add the control to the map
     sliderControl.addTo(map);
-    //jquery request to select the slider element
-    $('.slider')
-      .on('input change', function() { //When the slider selects a new grade
-        var currentGrade = $(this).val(); //push the newly selected grade to currentGrade
-        //call the functions below sending the layer and newly selected grade as arguments
-        resizeCircles(girlsLayer, boysLayer, currentGrade);
-        addGrade(boysLayer, currentGrade);
-        retreiveInfo(boysLayer, currentGrade);
-      });
-  }
 
-  function addGrade(boysLayer, currentGrade) {
     //create Leaflet control object for the grade box
     var gradeBox = L.control({
       position: 'bottomleft'
@@ -221,22 +209,22 @@
       return div;
 
     }
-    //add it to the map
-    gradeBox.addTo(map);
-    //jquery request to select the slider
-    $('.slider')
-      //when the slider selects a new grade
-      .on('input change', function(e) {
-        //push that new grade to currentGrade
-        var currentGrade = $(this).val();
-        //select the grade div element
-        var grade = $('.grade')
-        //populate that element
-        grade.show();
-        //select the .grade span tag and populate with currentGrade
-        $('.grade span').html('Grade: ' + currentGrade);
 
-      })
+    // add the control to the map
+    gradeBox.addTo(map);
+
+
+    //jquery request to select the slider element
+    $('.slider')
+      .on('input change', function() { //When the slider selects a new grade
+        var currentGrade = $(this).val(); //push the newly selected grade to currentGrade
+        //call the functions below sending the layer and newly selected grade as arguments
+        resizeCircles(girlsLayer, boysLayer, currentGrade);
+        retreiveInfo(boysLayer, currentGrade);
+
+        //select the .grade span tag and populate with currentGrade
+        $('#grade span').html(currentGrade);
+      });
   }
 
   function retreiveInfo(boysLayer, currentGrade) {
@@ -301,20 +289,20 @@
     $(document).mousemove(function(e) {
       // first offset from the mouse position of the info window
       info.css({
-        "info": e.pageX + 6,
-        "info": e.pageY - info.height() - 25
+        "left": e.pageX + 6,
+        "top": e.pageY - info.height() - 25
       });
 
       // if it crashes into the top, flip it lower right
       if (info.offset().top < 4) {
         info.css({
-          "info": e.pageY + 15
+          "top": e.pageY + 15
         });
       }
       // if it crashes into the right, flip it to the left
       if (info.offset().left + info.width() >= $(document).width() - 40) {
         info.css({
-          "info": e.pageX - info.width() - 80
+          "left": e.pageX - info.width() - 80
         });
       }
     });
